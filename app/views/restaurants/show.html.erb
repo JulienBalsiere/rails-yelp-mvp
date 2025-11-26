@@ -1,0 +1,21 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @restaurant %>
+
+<h3>Les avis de nos clients</h3>
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <li><%= review.content %></li>
+  <% end %>
+</ul>
+
+<h3>Ajouter un nouvel avis</h3>
+<%= simple_form_for [@restaurant, @review] do |f|%>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.submit "Valider" %>
+<% end %>
+
+<div>
+  <%= link_to "Back to restaurants", root_path %>
+</div>
